@@ -30,7 +30,14 @@ function createLocationService(storage) {
     return record;
   }
 
-  return { loadLocations, addLocation };
+  function getLocationHistory(catId) {
+    return loadLocations()
+      .filter(record => record.catId === catId)
+      .reverse()
+      .sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+  }
+
+  return { loadLocations, addLocation, getLocationHistory };
 }
 
 if (typeof module !== 'undefined') {

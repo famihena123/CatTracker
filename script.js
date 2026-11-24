@@ -51,6 +51,7 @@ function resetForm() {
 
 function renderCats() {
   updateLocationCats();
+  updateHistoryCats();
   list.replaceChildren();
   emptyState.hidden = cats.length > 0;
   count.textContent = `${cats.length} ${cats.length === 1 ? 'cat' : 'cats'}`;
@@ -158,10 +159,60 @@ document.getElementById('location-form')
       locationMessage.textContent = 'Location saved successfully!';
       locationMessage.className = 'message success';
       locationInput.value = '';
+      historyCat.value = locationCat.value;
+      renderLocationHistory();
     } catch (error) {
       locationMessage.textContent = error.message;
       locationMessage.className = 'message error';
     }
   });
+
+
+const historyCat = document.getElementById('history-cat');
+const historyList = document.getElementById('location-history');
+
+function updateHistoryCats() {
+  const selected = historyCat.value;
+  historyCat.replaceChildren(new Option('Select a cat', ''));
+
+  cats.forEach(cat => {
+    historyCat.add(new Option(cat.name, cat.id));
+  });
+
+  historyCat.value = selected;
+  renderLocationHistory();
+}
+
+function renderLocationHistory() {
+  historyList.replaceChildren();
+
+  if (!historyCat.value) {
+    historyList.textContent = 'Please select a cat.';
+    return;
+  }
+
+  const records = locationService.getLocationHistory(historyCat.value);
+
+  if (!records.length) {
+    historyList.textContent = 'No location records yet.';
+    return;
+  }
+
+  records.forEach(record => {
+    const card = document.createElement('article');
+    card.className = 'history-card';
+
+    const location = document.createElement('strong');
+    location.textContent = record.location;
+
+    const time = document.createElement('p');
+    time.textContent = new Date(record.timestamp).toLocaleString();
+
+    card.append(location, time);
+    historyList.append(card);
+  });
+}
+
+historyCat.addEventListener('change', renderLocationHistory);
 
 renderCats();

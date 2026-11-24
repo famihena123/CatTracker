@@ -13,3 +13,16 @@ select {
 #location-form button {
   margin-top: 15px;
 }
+
+.history-card {
+  border: 1px solid #e3e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 10px;
+}
+
+.history-card p {
+  color: #627086;
+  font-size: 14px;
+  margin: 8px 0 0;
+}
