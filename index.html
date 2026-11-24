@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cat Tracker | Sprint 1</title>
+  <title>Cat Tracker | Sprint 2</title>
   <link rel="stylesheet" href="style.css">
+  <script src="location-service.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
   <main class="container">
     <header>
-      <p class="eyebrow">CS 319 · Sprint 1</p>
+      <p class="eyebrow">CS 319 · Sprint 2</p>
       <h1>🐾 Cat Tracker</h1>
       <p>Keep your cats' information organized in one place.</p>
     </header>
@@ -31,6 +32,21 @@
       <div class="list-heading"><h2 id="list-heading">My cats</h2><span id="cat-count" class="count">0 cats</span></div>
       <p id="empty-state" class="empty">No cats added yet. Add your first cat above!</p>
       <div id="cat-list" class="cat-list" aria-live="polite"></div>
+    </section>
+    
+    <section class="panel">
+      <h2>Add a location record</h2>
+      <form id="location-form" novalidate>
+        <label>Select cat
+          <select id="location-cat"></select>
+        </label>
+        <label>Location
+          <input id="location-input" type="text"
+            placeholder="e.g., Living room">
+        </label>
+        <p id="location-message" class="message" role="status"></p>
+        <button type="submit">Save location</button>
+      </form>
     </section>
     <footer>Prototype only — live GPS tracking will be added in a future sprint.</footer>
   </main>

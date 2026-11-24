@@ -1,0 +1,24 @@
+{
+  "name": "cattracker_sprint2",
+  "version": "1.0.0",
+  "description": "**Author:** Fahamida Hena",
+  "main": "script.js",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/famihena123/CatTracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/famihena123/CatTracker/issues"
+  },
+  "homepage": "https://github.com/famihena123/CatTracker#readme",
+  "devDependencies": {
+    "vitest": "^5.1.1"
+  }
+}
