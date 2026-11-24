@@ -50,6 +50,7 @@ function resetForm() {
 }
 
 function renderCats() {
+  updateLocationCats();
   list.replaceChildren();
   emptyState.hidden = cats.length > 0;
   count.textContent = `${cats.length} ${cats.length === 1 ? 'cat' : 'cats'}`;
@@ -131,5 +132,36 @@ cancelButton.addEventListener('click', () => {
   resetForm();
   showMessage('Editing canceled.');
 });
+
+
+const locationService = createLocationService(localStorage);
+const locationCat = document.getElementById('location-cat');
+const locationInput = document.getElementById('location-input');
+const locationMessage = document.getElementById('location-message');
+
+function updateLocationCats() {
+  const selected = locationCat.value;
+  locationCat.replaceChildren(new Option('Select a cat', ''));
+  cats.forEach(cat => {
+    locationCat.add(new Option(cat.name, cat.id));
+  });
+  locationCat.value = selected;
+}
+
+document.getElementById('location-form')
+  .addEventListener('submit', event => {
+    event.preventDefault();
+    try {
+      locationService.addLocation(
+        locationCat.value, locationInput.value
+      );
+      locationMessage.textContent = 'Location saved successfully!';
+      locationMessage.className = 'message success';
+      locationInput.value = '';
+    } catch (error) {
+      locationMessage.textContent = error.message;
+      locationMessage.className = 'message error';
+    }
+  });
 
 renderCats();
