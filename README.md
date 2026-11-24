@@ -1,35 +1,52 @@
-# Cat Tracker — CS 319 Sprint 1
+# Cat Tracker - CS 319 Sprint 2
 
 **Author:** Fahamida Hena
 
 ## Purpose
-A beginner-friendly web app for storing and managing cat profiles. Sprint 1 supports adding, viewing, editing, and deleting cat profiles. GPS tracking is planned for a later sprint and is not included yet.
+Cat Tracker is a web application for managing cat profiles and recording their locations.
+
+## Completed Features
+- Add, view, edit, and delete cat profiles.
+- Add location records for saved cats (US-05).
+- Automatically record dates and times.
+- View location history for each cat (US-06).
+- Display the most recent location first.
+- Validate user input.
+- Save profiles and location records using localStorage.
 
 ## Technologies
-HTML5, CSS3, JavaScript (no external packages), browser localStorage.
+- HTML5
+- CSS3
+- JavaScript
+- Browser localStorage
+- Node.js and npm
+- Vitest
+- Git and GitHub
 
 ## Prerequisites
-A modern desktop or mobile web browser (for example, Google Chrome). No software installation or account is required to run the app.
+A modern web browser is required to run the application.
+Node.js and npm are required to run automated tests.
 
-## Installation and running
-1. Download or clone the project repository.
-2. Open the `SourceCode` folder (or the repository root if these files are at its root).
-3. Double-click `index.html` to open it in a web browser.
-4. If the browser blocks localStorage on local files, use a simple local web server instead: open a terminal in the folder containing `index.html`, run `python -m http.server 8000` (Python 3 required for this optional method), and open `http://localhost:8000`.
+## Installation and Running
+1. Download or clone the repository.
+2. Open the project folder.
+3. Open index.html in a web browser.
 
-## Trying Sprint 1 functionality
-1. Enter a name, age, and breed, then click **Save cat**.
-2. Confirm the cat appears under **My cats**.
-3. Refresh the page and confirm the cat remains visible.
-4. Click **Edit**, change the information, and click **Update cat**.
-5. Click **Delete**, then confirm the deletion.
-6. Try saving with an empty name, and try an age outside 0–40. Both should show validation messages.
+## Automated Testing
+Run the following commands in the project folder:
 
-## Storage and configuration
-Profiles are stored in the current browser's `localStorage`, under `cs319-cat-tracker-cats-v1`. No API keys, account, configuration files, or backend are needed. Data is local to the browser and device; clearing site data removes it.
+    npm ci
+    npm test
 
-## Known limitations
-- No GPS location, maps, alerts, accounts, or synchronization between devices yet.
-- No cloud backup or database; profiles remain only in the browser used to create them.
-- No automated tests in Sprint 1; acceptance criteria are checked manually.
-- This is a classroom prototype, not a production pet-safety tracker.
+Seven automated tests cover location recording, input
+validation, storage, and location history.
+
+## Known Limitations
+- Live GPS tracking is not implemented.
+- Locations must be entered manually.
+- Data is stored locally in the browser.
+- No user accounts or cloud backups.
+- This is a classroom prototype.
+
+## GitHub Repository
+https://github.com/famihena123/CatTracker

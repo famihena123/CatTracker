@@ -1,60 +1,47 @@
-\# Cat Tracker — Sprint 1 Manual Testing
+# Cat Tracker - Sprint 2 Testing
 
+**Author:** Fahamida Hena
 
+## Automated Testing
 
-\*\*Student:\*\* Fahamida Hena  
+Testing framework: Vitest
 
-\*\*Course:\*\* CS 319 — Fundamentals of Software Engineering  
+Run the tests using:
 
-\*\*Project:\*\* Cat Tracker  
+    npm ci
+    npm test
 
-\*\*Sprint:\*\* 1
+## Automated Test Results
 
+| Story | Test | Result |
+|---|---|---|
+| US-05 | Save a valid location with a timestamp | PASS |
+| US-05 | Reject an empty location | PASS |
+| US-05 | Reject a missing cat | PASS |
+| US-05 | Preserve saved location records | PASS |
+| US-06 | Show locations for the selected cat | PASS |
+| US-06 | Show the most recent location first | PASS |
+| US-06 | Return empty history for a cat without records | PASS |
 
+## Manual Test Results
 
-\## Test Results
+| Story | Test | Actual Result | Status |
+|---|---|---|---|
+| US-05 | Add a location | Location saved successfully | PASS |
+| US-06 | View location history | Saved location and timestamp displayed | PASS |
+| US-06 | Check location order | Bedroom displayed before Living room | PASS |
+| US-06 | Select a cat without records | No location records yet message displayed | PASS |
 
+## Testing Summary
 
+- Total automated tests: 7
+- Passed: 7
+- Failed: 0
+- All four documented manual checks passed.
 
-| Test                              | Expected Result                    | Actual Result                   | Status |
+## Known Limitations
 
-|---                                |---                                 |---                              |---     |
-
-| Add a cat                         | Cat profile is saved and displayed | Added Mini successfully         | PASS   |
-
-| View multiple cats                | Both cat profiles appear           | Chunchun and Mini appeared      | PASS   |
-
-| Edit a cat                        | Updated information is displayed   | Mini's age changed from 2 to 3  | PASS   |
-
-| Missing name                      | App displays an error              | Missing-field error appeared    | PASS   |
-
-| Invalid age (50)                  | App rejects age outside 0–40       | Age validation error appeared   | PASS   |
-
-| Delete a cat                      | Cat is removed after confirmation  | Mini was removed                | PASS   |
-
-| Cancel deletion                   | Cat remains when Cancel is clicked | Chunchun remained               | PASS   |
-
-| Refresh page                      | Saved cat information remains      | Chunchun remained after refresh | PASS   |
-
-
-
-\## Known Limitations
-
-
-
-\- Live GPS tracking is not available in Sprint 1.
-
-\- Cat information is saved only in the current browser using localStorage.
-
-\- There are no user accounts or cloud backups.
-
-\- Automated testing is not included in Sprint 1.
-
-
-
-\## Testing Summary
-
-
-
-Manual testing covered adding, viewing, editing, deleting, input validation, and saving cat profiles. The tested features worked as expected.
-
+- Live GPS tracking is not implemented.
+- Locations are entered manually.
+- Data is stored locally in the browser.
+- No user accounts or cloud backups.
