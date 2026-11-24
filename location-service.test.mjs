@@ -41,3 +41,36 @@ describe('US-05: Add Location Record', () => {
       .toBe('Bedroom');
   });
 });
+
+describe('US-06: View Location History', () => {
+  let tracker;
+
+  beforeEach(() => {
+    const data = new Map();
+    tracker = createLocationService({
+      getItem: key => data.get(key) ?? null,
+      setItem: (key, value) => data.set(key, value)
+    });
+  });
+
+  it('shows locations for the selected cat', () => {
+    tracker.addLocation('cat1', 'Bedroom');
+    tracker.addLocation('cat2', 'Kitchen');
+    expect(tracker.getLocationHistory('cat1'))
+      .toHaveLength(1);
+    expect(tracker.getLocationHistory('cat1')[0].location)
+      .toBe('Bedroom');
+  });
+
+  it('shows the most recent location first', () => {
+    tracker.addLocation('cat1', 'Bedroom');
+    tracker.addLocation('cat1', 'Living room');
+    expect(tracker.getLocationHistory('cat1')[0].location)
+      .toBe('Living room');
+  });
+
+  it('returns an empty history for a cat without records', () => {
+    expect(tracker.getLocationHistory('cat1'))
+      .toEqual([]);
+  });
+});
